@@ -4,6 +4,7 @@ import DropDownPicker from "react-native-dropdown-picker";
 import FlatButtons from "./FlatButtons";
 import { Component } from "react";
 import { useState } from "react";
+import Footer from "./footer";
 Font.loadAsync({
     
     'Poppins-Bold':require('./fonts/Poppins-Bold.ttf'),
@@ -31,7 +32,7 @@ const Details = ({ route,  }) => {
         }
     ]
   return (
-    <View style={{ flex: 1, backgroundColor: "#fafbff" }}>
+    <View style={{ flex: 1, backgroundColor: "lavender" }}>
       
 
       <View style={{ flex: 1 }}>
@@ -171,7 +172,10 @@ const Details = ({ route,  }) => {
           </View>
         </View>
       </View>
-    </View>
+      <View style={{flex:0.1,backgroundColor:'white',flexDirection:'row'}}> 
+    <Footer/>
+    </View> 
+    </View>  
   );
 };
 

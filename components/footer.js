@@ -1,15 +1,16 @@
-import {View,Text,StyleSheet} from 'react-native';
+import {View,Text,StyleSheet, Alert} from 'react-native';
 import React from 'react';
- import Flatbutton from './CustomButton'; 
-  const Footer=()=> {
-    const homeURL=require('./Images/home.jpg');
-    const cartURL=require('./Images/bag.jpg');
-    const profileURL=require('./Images/profile.jpg');
-    const wishlistURL=require('./Images/wishlist.jpg');
+ import Flatbutton from './Flatbutton'; 
+  export default function Footer({navigation}){
+    const homeURL=require('./Images/home.png');
+    const cartURL=require('./Images/bag.png');
+    const profileURL=require('./Images/profile.png');
+    const wishlistURL=require('./Images/wishlist.png');
+    
     
     return (
-        <View style={{flexDirection:'row'}}>
-        <Flatbutton image={homeURL}  />
+        <View style={{ flex:1,flexDirection:'row'}}>
+        <Flatbutton  image={homeURL} press={()=>{Alert.alert('home')}}  />
         <Flatbutton image={cartURL}  />      
         <Flatbutton image={wishlistURL}  />
         <Flatbutton image={profileURL}  />
@@ -17,4 +18,3 @@ import React from 'react';
       
     );
   }
-  export default Footer;

@@ -58,7 +58,7 @@ export default function Register({ navigation }) {
     <ScrollView style={styleSheet1.container}>
       <Text style={styleSheet1.register2}>Register</Text>
 
-      <Text style={styleSheet1.text}>Name</Text>
+      <Text >Name</Text>
       <TextInput style={styleSheet1.Textinput}
         placeholder='abcd'
         value={name}

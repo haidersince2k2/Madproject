@@ -15,7 +15,8 @@ export default StyleSheet.create({
         fontSize:30, 
         backgroundColor:'purple',
         marginTop:15,
-        marginLeft:40   
+        marginLeft:40 ,
+        
     },
     Textinput:{
         height:50,
@@ -30,14 +31,14 @@ export default StyleSheet.create({
        fontFamily:'Poppins-SemiBold',
     },
     text:{
+        flex:1,
         fontSize:15,
-        paddingLeft:10,
-        alignContent:'center',
+        justifyContent:'center',
         fontFamily:'Poppins-Bold',
         color:'white',
-        alignItems:'center',
-        paddingLeft:130,
-        justifyContent:'center'
+        marginLeft:130,
+        alignContent:'center',
+        marginTop:8
     },
     forgot:{
         marginLeft:210,

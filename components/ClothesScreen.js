@@ -5,7 +5,7 @@ import * as Font from 'expo-font';
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import { useState  } from "react";
 import { IconButton } from "@react-native-material/core";
-import FlatButtons from "./FlatButtons";
+
 Font.loadAsync({
   'Poppins-SemiBold':require('./fonts/Poppins-SemiBold.ttf'),
   

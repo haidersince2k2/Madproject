@@ -36,6 +36,7 @@ const MyStack = () => {
         <Stack.Screen name="BagsScreen" component={BagsScreen} />
         <Stack.Screen name="ShoesScreen" component={ShoesScreen} />
         <Stack.Screen name="Details" component={Details} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   

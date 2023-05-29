@@ -21,10 +21,10 @@ const Login = ({navigation}) => {
 
         })
         .catch(error=>{
-            if(error==='auth/wrong-password'){
-                Alert.alert('Wrong password')
+            
+                Alert.alert('error')
 
-            }
+            
         }
             
             )
