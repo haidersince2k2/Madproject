@@ -2,9 +2,10 @@
 import { initializeApp } from "firebase/app";
 import {getAuth,createUserWithEmailAndPassword} from "firebase/auth"
 import { getFirestore } from "firebase/firestore";
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC8RW82TKy17ISW6uDDTEoR09iUSy7TqME",
+ apiKey: "AIzaSyC8RW82TKy17ISW6uDDTEoR09iUSy7TqME",
   authDomain: "project-3eb47.firebaseapp.com",
   projectId: "project-3eb47",
   storageBucket: "project-3eb47.appspot.com",
@@ -14,5 +15,5 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const authentication=getAuth(app)
+export const auth=getAuth(app)
 export const db=getFirestore(app)

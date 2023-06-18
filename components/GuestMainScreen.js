@@ -3,21 +3,19 @@ import React, { useEffect, useState } from 'react';
 import Flatbutton from './Flatbutton';
 
 import * as Font from 'expo-font';
-
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import { TouchableOpacity } from 'react-native';
 import { IconButton } from "@react-native-material/core";
-import { NavigationContainer } from '@react-navigation/native';
 
 Font.loadAsync({
   'Poppins-SemiBold': require('./fonts/Poppins-SemiBold.ttf'),
   'LemonLove': require('.//fonts/LemonLove.ttf'),
   'MilkyCoffee': require('.//fonts/Milky Coffee.ttf')
 })
-export default function Main({ navigation }) {
+export default function GuestMain({ navigation }) {
   const BurgerCard = ({ cloth, navigation }) => {
     return (
-      <TouchableOpacity onPress={() => { navigation.navigate('Details', { item: cloth }) }}>
+      <TouchableOpacity onPress={() => { navigation.navigate('GuestDetails', { item: cloth }) }}>
         <View
           style={{
             flex: 1,
@@ -45,7 +43,20 @@ export default function Main({ navigation }) {
 
               </View>
 
-             
+              <IconButton
+                color="white"
+                icon={(props) => (
+                  <TouchableOpacity onPress={() => {
+                    cloth.isLiked = (!cloth.isLiked)
+                  }}>
+                    <Icon
+                      name="heart"
+                      color={cloth.isLiked ? "red" : "grey"}
+                      style={{ fontSize: 30 }}
+                    />
+                  </TouchableOpacity>
+                )}
+              />
             </View>
           </View>
 
@@ -96,58 +107,6 @@ export default function Main({ navigation }) {
       </TouchableOpacity>
     );
   };
-  const [bagitems,setbagitems]=useState([
-    {id: '01',
-    title: 'MAROON WALLET',
-    price: 1490.00,
-    uri: require('../assets/Imagesofbags/image1.webp'),
-    details: 'Our trendy and easy to carry wallet in maroon.',
-    colour: 'Maroon',
-    isLiked: 'true'
-},
-   {id: '02',
-    title: 'OLIVE GREEN TOTE BAG',
-    price: 4990.00,
-    uri: require('../assets/Imagesofbags/image2.webp'),
-    details: 'Make a style statement with our olive green tote with button closure..',
-    colour: 'Olive Green',
-    isLiked: 'true'
-},
-{id: '03',
-    title: 'BLACK TOTE BAG',
-    price:5490.00,
-    uri: require('../assets/Imagesofbags/image3.webp'),
-    details: ' A stylish yet spacious tote bag with quilted texture and chain handle.',
-    colour: 'Black',
-    isLiked: 'true'
-},
-{id: '04',
-    title: 'TAN TOTE BAG',
-    price: 4990.00,
-    uri: require('../assets/Imagesofbags/image4.webp'),
-    details: 'Uplift your attire with our tan faux leather',
-    colour: 'Tan',
-    isLiked: 'true'
-},
-{id: '05',
-    title: 'MUSTARD TOTE BAG',
-    price: 4490.00,
-    uri: require('../assets/Imagesofbags/image5.webp'),
-    details: 'Our signature tote in mustard is a must have this season.',
-    colour: 'Mustard',
-    isLiked: 'true'
-},
-{id: '06',
-    title: 'BLACK TOTE BAG',
-    price: 4490.00,
-    uri: require('../assets/Imagesofbags/image6.webp'),
-    details: 'This chic yet spacious tote bag in black is perfect for all your everyday essentials.',
-    colour: 'Black',
-    isLiked: 'true'
-},
-
-  ]);
-
   const [menuItems, setMenuItems] = useState([
     {
       id: '01',
@@ -224,7 +183,7 @@ export default function Main({ navigation }) {
       <View style={{ flex: 1 }}>
 
         <View style={{ flex: 0.5 }}>
-          <TouchableOpacity onPress={()=>navigation.navigate('ClothesScreen')}>
+          <TouchableOpacity onPress={()=>navigation.navigate('GuestClothes')}>
             <Image source={require('./Images/banner.png')}
               style={{ width: '100%', height: 200, borderRadius: 5, allignSelf: 'center', }}
             />
@@ -232,9 +191,9 @@ export default function Main({ navigation }) {
         </View>
         <View style={{ flex: 0.2, flexDirection: 'row', top: 70,marginBottom:20,marginLeft:80,marginVertical:20, }}>
           
-          <Flatbutton image={readyURL} data={'Pret'} fun={()=>{navigation.navigate('ClothesScreen')}}/>
-          <Flatbutton image={unstitchedURL} data={'Bags'} fun={()=>{navigation.navigate('Bags')}}/>
-          <Flatbutton image={allURL} data={'All'} fun={()=>{navigation.navigate('All')}}/>
+          <Flatbutton image={readyURL} data={'Pret'} fun={()=>navigation.navigate('GuestClothes')}/>
+          <Flatbutton image={unstitchedURL} data={'Bags'} fun={()=>navigation.navigate('GuestClothes')}/>
+          <Flatbutton image={allURL} data={'All'} fun={()=>navigation.navigate('GuestClothes')}/>
 
 
 
@@ -246,18 +205,15 @@ export default function Main({ navigation }) {
 
   return (
 
-    
-
     <View style={{ flex: 1 }}>
 
 
+      <View style={{ flex: 0.9, width: '100%', height: 70, backgroundColor: 'lavender', flexDirection: 'column' }}>
+        <HomeScreen />
+      </View>
       <View style={{ flex: 1 }}>
 
         <ScrollView style={{ flex: 1, backgroundColor: "lavender" }}>
-          
-      <View style={{ flex: 0.9, width: '100%', height: 350, backgroundColor: 'lavender', flexDirection: 'column' }}>
-        <HomeScreen />
-      </View>
           <View
             style={{
               marginLeft: 20,
@@ -294,34 +250,18 @@ export default function Main({ navigation }) {
             />
 
           </View>
-          <View
-            style={{
-              flex: 1,
-              marginLeft: 10,
-              alignItems: "center",
-              marginBottom: 20,
-              marginTop: 16,
-            }}
-          >
-            <FlatList
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              data={bagitems}
-              renderItem={({ item }) => (
-                <BurgerCard cloth={item} navigation={navigation} />
-              )}
-              keyExtractor={(item) => item.id}
-            />
-
-          </View>
-          
 
 
         </ScrollView>
-     
-     </View>
+
+
+
+
+
+
+      </View>
+      
     </View>
-   
   );
 
 }

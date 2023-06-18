@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import CustomButton from './CustomButton'
 import styleSheet1 from './styleSheet1'
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import { authentication } from './firebase'
+import { auth } from './firebase'
 import {MaterialCommunityIcons} from '@expo/vector-icons'
 
 const Login = ({navigation}) => {
@@ -13,18 +13,15 @@ const Login = ({navigation}) => {
     const [visible, setvisible] = useState(true)
 
     const handellogin=()=>{
-        signInWithEmailAndPassword(authentication,email,password)
+        signInWithEmailAndPassword(auth,email,password)
         .then(UserCredentials=>{
             const user=UserCredentials.user;
             Alert.alert("Loged in!")
-            navigation.navigate("MainScreen")
+            navigation.navigate("FrontScreen")
 
         })
         .catch(error=>{
-            
-                Alert.alert('error')
-
-            
+            Alert.alert(error.message);
         }
             
             )

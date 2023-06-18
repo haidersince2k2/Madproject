@@ -1,10 +1,10 @@
-import { ScrollView, Text, View, Image, Alert } from "react-native"
+import { ScrollView, Text, View, Image, Alert, TouchableOpacity } from "react-native"
 import * as Font from 'expo-font';
 import DropDownPicker from "react-native-dropdown-picker";
 import FlatButtons from "./FlatButtons";
 import { Component } from "react";
 import { useState } from "react";
-import MainTabs from "./MainTabs";
+
 import { StatusBar } from "expo-status-bar";
 
 
@@ -13,27 +13,10 @@ Font.loadAsync({
     'Poppins-Bold':require('./fonts/Poppins-Bold.ttf'),
     'Poppins-SemiBold':require('./fonts/Poppins-SemiBold.ttf')
 })
-const Details = ({ route, navigation }) => {
+const GuestDetails = ({ route, navigation }) => {
     const [isOpen, setisOpen] = useState(false)
     const [currentvalue, setcurrentvalue] = useState()
-    let data=[
-        {
-            label:'Small',
-            value:'Small'
-        },
-        {
-            label:'Medium',
-            value:'Medium'
-        },
-        {
-            label:'Large',
-            value:'Large'
-        },
-        {
-            label:'XL',
-            value:'XL'
-        }
-    ]
+   
   return (
     <View style={{ flex: 1, backgroundColor: "lavender" }}>
       <StatusBar translucent={true} backgroundColor={'transparent'}/>
@@ -135,21 +118,7 @@ const Details = ({ route, navigation }) => {
             }}
           >
            
-            
-           <DropDownPicker 
-  items={data}
-  open={isOpen}
-  setOpen={() => setisOpen(!isOpen)}
-  value={currentvalue}
-  setValue={(val) => setcurrentvalue(val)} // Correction: Use `setValue` instead of `setvalue`
-  onChangeSearchText={(text) => {
-    setcurrentvalue(text); // Correction: Pass `text` as the argument
-  }}
-  autoScroll
-  maxHeight={100}
-  placeholder="Select Size"
-  tickIconStyle={true}
-/>
+          
 
             </View>
           </View>
@@ -163,17 +132,26 @@ const Details = ({ route, navigation }) => {
               {route.params.item.details}
             </Text>
           </View>
-
-
           <View style={{ flex: 1, alignItems: "center", flexDirection:'row',marginLeft:32,}}>
-           <FlatButtons fun={()=>navigation.navigate('Buy')}data={'Buy Now'} />
-           <FlatButtons fun={()=>navigation.navigate('Cart')} data={'Add to Cart'}/>
+          <Text style={{fontWeight:'bold', fontSize:15,fontFamily:'Poppins-Bold'}}>
+            Please  
+            </Text>
+            <TouchableOpacity onPress={()=>navigation.navigate('Login')}>
+                <Text style={{color:'blue',fontWeight:'bold', fontSize:15,fontFamily:'Poppins-Bold'}}>  Login </Text>
+            </TouchableOpacity>
+            <Text style={{fontWeight:'bold', fontSize:15,fontFamily:'Poppins-Bold'}}> or </Text>
+        <TouchableOpacity onPress={()=>navigation.navigate('Register')}><Text style={{color:'blue',fontWeight:'bold', fontSize:15,fontFamily:'Poppins-Bold'}}>  Register</Text></TouchableOpacity>
+        <Text style={{fontWeight:'bold', fontSize:15,fontFamily:'Poppins-Bold'}}> to place order.</Text>
           </View>
+
+
+          
         </View>
       </View>
- 
+     
     </View>  
+    
   );
 };
 
-export { Details };
+export { GuestDetails };

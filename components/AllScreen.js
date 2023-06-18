@@ -1,20 +1,18 @@
-import { View, Text, StyleSheet, ScrollView, Image, FlatList } from 'react-native';
+import { View, Text,  ScrollView, Image, FlatList } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import Flatbutton from './Flatbutton';
 
 import * as Font from 'expo-font';
 
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import { TouchableOpacity } from 'react-native';
-import { IconButton } from "@react-native-material/core";
-import { NavigationContainer } from '@react-navigation/native';
+
 
 Font.loadAsync({
   'Poppins-SemiBold': require('./fonts/Poppins-SemiBold.ttf'),
   'LemonLove': require('.//fonts/LemonLove.ttf'),
   'MilkyCoffee': require('.//fonts/Milky Coffee.ttf')
 })
-export default function Main({ navigation }) {
+export default function All({ navigation }) {
   const BurgerCard = ({ cloth, navigation }) => {
     return (
       <TouchableOpacity onPress={() => { navigation.navigate('Details', { item: cloth }) }}>
@@ -212,41 +210,8 @@ export default function Main({ navigation }) {
     },
   ]);
 
-  const readyURL = require('./Images/Ready.png');
-  const unstitchedURL = require('./Images/unstitched.png');
-  const allURL = require('./Images/all.png');
-  const newURL = require('./Images/new.png');
-
-
-  const HomeScreen = () => {
-
-    return (
-      <View style={{ flex: 1 }}>
-
-        <View style={{ flex: 0.5 }}>
-          <TouchableOpacity onPress={()=>navigation.navigate('ClothesScreen')}>
-            <Image source={require('./Images/banner.png')}
-              style={{ width: '100%', height: 200, borderRadius: 5, allignSelf: 'center', }}
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={{ flex: 0.2, flexDirection: 'row', top: 70,marginBottom:20,marginLeft:80,marginVertical:20, }}>
-          
-          <Flatbutton image={readyURL} data={'Pret'} fun={()=>{navigation.navigate('ClothesScreen')}}/>
-          <Flatbutton image={unstitchedURL} data={'Bags'} fun={()=>{navigation.navigate('Bags')}}/>
-          <Flatbutton image={allURL} data={'All'} fun={()=>{navigation.navigate('All')}}/>
-
-
-
-        </View>
-      </View>
-
-    );
-  }
-
+  
   return (
-
-    
 
     <View style={{ flex: 1 }}>
 
@@ -255,9 +220,7 @@ export default function Main({ navigation }) {
 
         <ScrollView style={{ flex: 1, backgroundColor: "lavender" }}>
           
-      <View style={{ flex: 0.9, width: '100%', height: 350, backgroundColor: 'lavender', flexDirection: 'column' }}>
-        <HomeScreen />
-      </View>
+      
           <View
             style={{
               marginLeft: 20,
@@ -267,9 +230,9 @@ export default function Main({ navigation }) {
             }}
           >
             <Text
-              style={{ fontFamily: "MilkyCoffee", fontSize: 40, fontWeight: 'bold', flex: 1, paddingLeft: 90, }}
+              style={{ fontFamily: "MilkyCoffee", fontSize: 30, fontWeight: 'bold', flex: 1, paddingLeft: 120, }}
             >
-              Trending
+              Clothes
             </Text>
 
           </View>
@@ -296,6 +259,23 @@ export default function Main({ navigation }) {
           </View>
           <View
             style={{
+              marginLeft: 20,
+              
+              flex: 1,
+              flexDirection: "row",
+              alignItems: "center",
+              
+            }}
+          >
+            <Text
+              style={{ fontFamily: "MilkyCoffee", fontSize: 30, fontWeight: 'bold', flex: 1, paddingLeft: 130, }}
+            >
+              Bags
+            </Text>
+
+          </View>
+          <View
+            style={{
               flex: 1,
               marginLeft: 10,
               alignItems: "center",
@@ -314,14 +294,20 @@ export default function Main({ navigation }) {
             />
 
           </View>
-          
 
 
         </ScrollView>
-     
-     </View>
+
+
+
+
+
+
+      </View>
+      
+
+      
     </View>
-   
   );
 
 }

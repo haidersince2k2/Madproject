@@ -10,7 +10,7 @@ Font.loadAsync({
   'Poppins-SemiBold':require('./fonts/Poppins-SemiBold.ttf'),
   
 })
-export default function Home({navigation}) {
+export default function GuestHome({navigation}) {
 
  
   const [menuItems, setMenuItems] = useState([
@@ -84,24 +84,25 @@ export default function Home({navigation}) {
         style={{
           marginLeft: 20,
           flex: 1,
-          flexDirection: "row",
-          alignItems: "center",
+          flexDirection: "column",
+         // alignItems: "center",
         }}
       >
         
+      
       </View>
 
       <View
         style={{
           flex: 1,
-          marginLeft: 10,
-          alignItems: "center",
+          //marginLeft: 10,
+          //alignItems: "center",
           marginBottom: 20,
           marginTop: 16,
         }}
       >
         <FlatList
-         // horizontal={true}
+        //  horizontal={true}
           showsHorizontalScrollIndicator={false}
           data={menuItems}
           renderItem={({ item }) => (
@@ -109,6 +110,16 @@ export default function Home({navigation}) {
           )}
           keyExtractor={(item) => item.id}
         />
+         <FlatList
+        //  horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          data={menuItems}
+          renderItem={({ item }) => (
+            <BurgerCard cloth={item} navigation={navigation}/>
+          )}
+          keyExtractor={(item) => item.id}
+        />
+        
 
       </View>
 
@@ -120,14 +131,15 @@ export default function Home({navigation}) {
 
 const BurgerCard = ({ cloth, navigation }) => {
   return (
-    <TouchableOpacity onPress={()=>{navigation.navigate('Details', {item: cloth})}}>
+    <TouchableOpacity onPress={()=>{navigation.navigate('GuestDetails', {item: cloth})}}>
       <View
         style={{
           flex: 1,
-          width: 300,
-          height: 300,
+          width: 180,
+          height: 250,
           backgroundColor: "white",
-          margin: 8,
+          margin: 4,
+          marginLeft:10,
           
           borderRadius: 12,
         }}
@@ -135,44 +147,16 @@ const BurgerCard = ({ cloth, navigation }) => {
         <View
           style={{ flex: 0.28, alignItems: "center", justifyContent: "center" }}
         >
-          <View style={{ flex: 1, flexDirection: "row" }}>
-            <View
-              style={{
-                margin: 12,
-                flex: 1,
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              
-              
-            </View>
-
-            <IconButton
-              color="white"
-              icon={(props) => (
-                <TouchableOpacity onPress={()=>{
-                  cloth.isLiked=(!cloth.isLiked)
-                }}>
-                <Icon
-                  name="heart"
-                  color={cloth.isLiked ? "red" : "grey"}
-                  style={{ fontSize: 30 }}
-                />
-                </TouchableOpacity>
-              )}
-            />
-          </View>
+          
         </View>
 
         <View
           style={{ flex: 0.6, alignItems: "center", justifyContent: "center" }}
         >
           <Image
-            
             style={{
-              width: 190,
-              height: 190,
+              width: 140,
+              height: 140,
               borderRadius:10,
               alignItems: "center",
               justifyContent: "center",
@@ -186,21 +170,13 @@ const BurgerCard = ({ cloth, navigation }) => {
           <Text
             style={{
               textAlign: "center",
-              fontSize: 16,
+              fontSize: 12,
               fontFamily: "Poppins-SemiBold",
             }}
           >
             {cloth.title}
           </Text>
-          <Text
-            style={{
-              textAlign: "center",
-              fontSize: 16,
-              fontFamily: "Poppins-SemiBold",
-            }}
-          >
-           Colour : {cloth.colour}
-          </Text>
+          
           <Text
             style={{
               textAlign: "center",

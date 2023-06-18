@@ -38,7 +38,7 @@ export default StyleSheet.create({
         color:'white',
         marginLeft:130,
         alignContent:'center',
-        marginTop:8
+        marginTop:10,
     },
     forgot:{
         marginLeft:210,
@@ -161,7 +161,6 @@ export default StyleSheet.create({
         fontSize:30,
         fontWeight:'bold',
         marginBottom:10,
-        //fontStyle:'italic',
         marginLeft:20,
         fontFamily:'LemonLove'
     },
